@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grievance Portal</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, hsl(216, 63%, 62%), #c53cb3);
+            color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 500px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 2.2em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #fff;
+            font-size: 1em;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #000;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
+            outline: none;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            height: 120px;
+        }
+
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(135deg, #2980b9, #3498db);
+            transform: translateY(-2px);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Progress Icon */
+        .progress-icon {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: #3498db;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .progress-icon:hover {
+            transform: scale(1.1);
+            background: #2980b9;
+        }
+
+        /* Progress Modal */
+        .progress-modal {
+            display: none;
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            width: 300px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            animation: slideIn 0.5s ease;
+        }
+
+        .progress-modal.show {
+            display: block;
+        }
+
+        .progress-modal h2 {
+            margin-bottom: 15px;
+            font-size: 1.5em;
+            color: #1e3c72;
+        }
+
+        .progress-modal ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .progress-modal ul li {
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .progress-modal ul li span {
+            font-weight: bold;
+            color: #3498db;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Progress Icon -->
+    <div class="progress-icon" onclick="toggleProgressModal()">
+        <i class="fas fa-spinner"></i>
+    </div>
+
+    <!-- Progress Modal -->
+    <div class="progress-modal" id="progressModal">
+        <h2>Grievance Progress</h2>
+        <ul>
+            <li><span>Status:</span> Sent</li>
+            <li><span>Received by:</span> John Doe</li>
+            <li><span>Grievance Status:</span> Under Review</li>
+            <li><span>Feedback:</span> Pending</li>
+        </ul>
+    </div>
+
+    <!-- Grievance Form -->
+    <div class="container">
+        <h1>Grievance Portal</h1>
+        <form>
+            <!-- Name -->
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            </div>
+
+            <!-- Registration Number -->
+            <div class="form-group">
+                <label for="regno">Registration Number</label>
+                <input type="text" id="regno" name="regno" placeholder="Enter your registration number" required>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+
+            <!-- Department Dropdown -->
+            <div class="form-group">
+                <label for="department">Department</label>
+                <select id="department" name="department" required>
+                    <option value="" disabled selected>Select your department</option>
+                    <option value="aeronautical">Aeronautical Engineering</option>
+                    <option value="mechanical">Mechanical Engineering</option>
+                    <option value="marine">Marine Engineering</option>
+                    <option value="ece">ECE</option>
+                    <option value="ecebml">ECE BML</option>
+                    <option value="cse">CSE</option>
+                    <option value="csebml">CSE BML</option>
+                </select>
+            </div>
+
+            <!-- Category Dropdown -->
+            <div class="form-group">
+                <label for="category">Category</label>
+                <select id="category" name="category" required>
+                    <option value="" disabled selected>Select a category</option>
+                    <option value="academics">Academics</option>
+                    <option value="hostel">Hostel</option>
+                    <option value="placement">Placement Related Queries</option>
+                    <option value="counselling">Counselling for Peaceful Mental Health</option>
+                    <option value="startup">Startup Queries</option>
+                    <option value="others">Others</option>
+                </select>
+            </div>
+
+            <!-- Complaint -->
+            <div class="form-group">
+                <label for="complaint">Complaint</label>
+                <textarea id="complaint" name="complaint" placeholder="Describe your complaint" required></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        // Function to toggle the progress modal
+        function toggleProgressModal() {
+            const modal = document.getElementById('progressModal');
+            modal.classList.toggle('show');
+        }
+    </script>
+    <script>
+        // Function to submit the grievance form
+        async function submitForm(event) {
+            event.preventDefault();
+    
+            const formData = {
+                name: document.getElementById('name').value,
+                regno: document.getElementById('regno').value,
+                email: document.getElementById('email').value,
+                department: document.getElementById('department').value,
+                category: document.getElementById('category').value,
+                complaint: document.getElementById('complaint').value,
+            };
+    
+            try {
+                const response = await fetch('http://127.0.0.1:5000/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData),
+                });
+    
+                const result = await response.json();
+                if (response.ok) {
+                    alert(result.message);
+                    window.location.reload(); // Reload the page after submission
+                } else {
+                    alert(result.error);
+                }
+            } catch (error) {
+                alert('An error occurred while submitting the form');
+            }
+        }
+    
+        // Attach the submitForm function to the form's submit event
+        document.querySelector('form').addEventListener('submit', submitForm);
+    
+        // Function to fetch grievance progress
+        async function fetchProgress() {
+            try {
+                const response = await fetch('http://127.0.0.1:5000/progress');
+                const result = await response.json();
+                if (response.ok) {
+                    const modalContent = document.querySelector('#progressModal ul');
+                    modalContent.innerHTML = `
+                        <li><span>Status:</span> ${result.status}</li>
+                        <li><span>Name:</span> ${result.name}</li>
+                        <li><span>Department:</span> ${result.department}</li>
+                        <li><span>Category:</span> ${result.category}</li>
+                    `;
+                } else {
+                    alert(result.error);
+                }
+            } catch (error) {
+                alert('An error occurred while fetching progress');
+            }
+        }
+    
+        // Fetch progress when the progress icon is clicked
+        document.querySelector('.progress-icon').addEventListener('click', fetchProgress);
+    </script>
+</body>
+</html>
