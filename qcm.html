@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quality Circle Meeting (QCM)</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, hsl(216, 63%, 62%), #c53cb3);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .container {
+            width: 90%;
+            max-width: 600px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.2em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        .input-box {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            font-size: 1em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .submit-btn {
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            background: #3498db;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 1em;
+        }
+        .submit-btn:hover {
+            background: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Quality Circle Meeting (QCM)</h1>
+        <p>Enter the unique ID provided by your teacher to join the QCM for faculty review.</p>
+        <input type="text" class="input-box" id="qcmId" placeholder="Enter Unique ID">
+        <button class="submit-btn" onclick="loginQCM()">Join QCM</button>
+    </div>
+    <script>
+        function loginQCM() {
+            const qcmId = document.getElementById("qcmId").value.trim();
+            if (qcmId) {
+                window.location.href = "qcm_review.html"; // Redirect to the QCM review page
+            } else {
+                alert("Please enter a valid QCM ID.");
+            }
+        }
+    </script>
+</body>
+</html>
