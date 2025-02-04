@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Official Divisions</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, hsl(216, 63%, 62%), #c53cb3);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+        }
+
+        .container {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .division {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 300px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .division:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .subdivision {
+            margin-top: 20px;
+        }
+
+        .subdivision a {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px;
+            margin: 10px 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .subdivision a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(10px);
+        }
+
+        /* Animation for links */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .subdivision a {
+            animation: fadeIn 0.5s ease forwards;
+            opacity: 0;
+        }
+
+        .subdivision a:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .subdivision a:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .subdivision a:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .subdivision a:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        /* Landscape mode for headings */
+        .division h1 {
+            writing-mode: horizontal-tb;
+            transform: rotate(0deg);
+        }
+    </style>
+</head>
+<script src="//code.tidio.co/v118bg6vjk9saqrajcje0p6ickslkax3.js" async></script>
+<body>
+    <div class="header">AutoNova</div>
+    <div class="container">
+        <!-- Official Division -->
+        <div class="division">
+            <h1>Official</h1>
+            <div class="subdivision">
+                <h2>Public</h2>
+                <a href="grievance.html">Grievance Portal</a>
+                <a href="chatbot.html">Chatbot</a>
+                <a href="faculty_projects.html">Projects and Research</a>
+                <a href="spotlight.html">Spotlight</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
