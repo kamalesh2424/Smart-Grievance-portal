@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student - Projects and Research</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, hsl(216, 63%, 62%), #c53cb3);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 2.2em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .faculty-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .faculty-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .faculty-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .faculty-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #3498db;
+            margin-bottom: 15px;
+        }
+
+        .faculty-card h2 {
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+
+        .faculty-card p {
+            font-size: 0.9em;
+            margin: 5px 0;
+        }
+
+        .current-projects,
+        .previous-projects,
+        .h10-index,
+        .i10-index,
+        .books-written,
+        .awards-received {
+            margin-top: 15px;
+            text-align: left;
+        }
+
+        .current-projects h3,
+        .previous-projects h3,
+        .h10-index h3,
+        .i10-index h3,
+        .books-written h3,
+        .awards-received h3 {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            color: #3498db;
+        }
+
+        .current-projects ul,
+        .previous-projects ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .current-projects li,
+        .previous-projects li {
+            font-size: 0.9em;
+            margin: 5px 0;
+            padding: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+        }
+
+        .reaction-buttons {
+            margin-top: 15px;
+        }
+
+        .reaction-buttons button {
+            background: #3498db;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            padding: 8px 12px;
+            margin: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .reaction-buttons button:hover {
+            background: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Student - Projects and Research</h1>
+        <div class="faculty-list">
+            <!-- Faculty Card 1 -->
+            <div class="faculty-card">
+                <img src="https://via.placeholder.com/100" alt="Faculty Image">
+                <h2>Dr. John Doe</h2>
+                <p>Email: john.doe@example.com</p>
+                <p>Cabin: A-101</p>
+
+                <!-- H10 Index (Conditional) -->
+                <div class="h10-index" id="h10-index-1">
+                    <h3>H10 Index</h3>
+                    <p>12</p>
+                </div>
+
+                <!-- I10 Index (Conditional) -->
+                <div class="i10-index" id="i10-index-1">
+                    <h3>I10 Index</h3>
+                    <p>8</p>
+                </div>
+
+                <!-- Current Projects (Conditional) -->
+                <div class="current-projects" id="current-projects-1">
+                    <h3>Current Projects</h3>
+                    <ul>
+                        <li>AI for Climate Change</li>
+                        <li>Blockchain in Healthcare</li>
+                    </ul>
+                </div>
+
+                <!-- Previous Projects (Conditional) -->
+                <div class="previous-projects" id="previous-projects-1">
+                    <h3>Previous Projects</h3>
+                    <ul>
+                        <li>Quantum Computing Algorithms</li>
+                    </ul>
+                </div>
+
+                <!-- Books Written (Conditional) -->
+                <div class="books-written" id="books-written-1">
+                    <h3>Books Written</h3>
+                    <p>"AI and the Future", "Blockchain Basics"</p>
+                </div>
+
+                <!-- Awards Received (Conditional) -->
+                <div class="awards-received" id="awards-received-1">
+                    <h3>Awards Received</h3>
+                    <p>Best Researcher Award 2023</p>
+                </div>
+
+                <!-- Reaction Buttons -->
+                <div class="reaction-buttons">
+                    <button>👍 Like</button>
+                    <button>💬 Comment</button>
+                </div>
+            </div>
+
+            <!-- Faculty Card 2 -->
+            <div class="faculty-card">
+                <img src="https://via.placeholder.com/100" alt="Faculty Image">
+                <h2>Dr. Jane Smith</h2>
+                <p>Email: jane.smith@example.com</p>
+                <p>Cabin: B-202</p>
+
+                <!-- Current Projects (Conditional) -->
+                <div class="current-projects" id="current-projects-2">
+                    <h3>Current Projects</h3>
+                    <ul>
+                        <li>Renewable Energy Systems</li>
+                        <li>Autonomous Vehicles</li>
+                    </ul>
+                </div>
+
+                <!-- Reaction Buttons -->
+                <div class="reaction-buttons">
+                    <button>👍 Like</button>
+                    <button>💬 Comment</button>
+                </div>
+            </div>
+
+            <!-- Add more faculty cards as needed -->
+        </div>
+    </div>
+
+    <script>
+        // Function to hide sections if they are empty
+        function hideEmptySections() {
+            const facultyCards = document.querySelectorAll('.faculty-card');
+            facultyCards.forEach((card) => {
+                const sections = card.querySelectorAll('div[id]');
+                sections.forEach((section) => {
+                    if (!section.textContent.trim()) {
+                        section.style.display = 'none';
+                    }
+                });
+            });
+        }
+
+        // Call the function to hide empty sections
+        hideEmptySections();
+    </script>
+</body>
+</html>
