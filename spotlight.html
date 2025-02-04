@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotlight</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, hsl(216, 63%, 62%), #c53cb3);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 600px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 2.2em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .link-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .link-list li {
+            margin: 15px 0;
+        }
+
+        .link-list a {
+            display: block;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: #fff;
+            text-decoration: none;
+            text-align: center;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .link-list a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .link-list a:active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Spotlight</h1>
+        <ul class="link-list">
+            <!-- External Participation Form -->
+            <li>
+                <a href="path/to/external-participation-form.pdf" download>External Participation Form</a>
+            </li>
+
+            <!-- Student Council 2024-25 -->
+            <li>
+                <a href="path/to/student-council-2024-25.pdf" download>Student Council 2024-25</a>
+            </li>
+
+            <!-- Library Guidelines -->
+            <li>
+                <a href="path/to/library-guidelines.pdf" download>Library Guidelines</a>
+            </li>
+
+            <!-- Day Boarder/Day Scholar Form -->
+            <li>
+                <a href="path/to/day-boarder-form.pdf" download>Day Boarder/Day Scholar Form</a>
+            </li>
+
+            <!-- Hostel Admission Request Form For Day Scholars -->
+            <li>
+                <a href="path/to/hostel-admission-form.pdf" download>Hostel Admission Request Form For Day Scholars</a>
+            </li>
+
+            <!-- Hostel Vacating Consent Form For Projects/Internships -->
+            <li>
+                <a href="path/to/hostel-vacating-form.pdf" download>Hostel Vacating Consent Form For Projects/Internships</a>
+            </li>
+        </ul>
+    </div>
+
+</body>
+</html>
