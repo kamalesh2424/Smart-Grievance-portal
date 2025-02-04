@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoNova - Official and Unofficial Divisions</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, hsl(216, 63%, 62%), #c53cb3);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 20px 0;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .division {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 300px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .division:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .subdivision {
+            margin-top: 20px;
+        }
+
+        .subdivision a {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px;
+            margin: 10px 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .subdivision a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(10px);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .subdivision a {
+            animation: fadeIn 0.5s ease forwards;
+            opacity: 0;
+        }
+
+        .subdivision a:nth-child(n) {
+            animation-delay: calc(0.1s * var(--i));
+        }
+    </style>
+</head>
+<script src="//code.tidio.co/v118bg6vjk9saqrajcje0p6ickslkax3.js" async></script>
+<body>
+    <h1>AutoNova</h1>
+    <div class="container">
+        <div class="division">
+            <h1>Official</h1>
+            <div class="subdivision">
+                <h2>Public</h2>
+                <a href="grievance.html" style="--i:1;">Grievance Portal</a>
+                <a href="chatbot.html" style="--i:2;">Chatbot</a>
+                <a href="student_projects.html" style="--i:3;">Projects and Research</a>
+                <a href="spotlight.html" style="--i:4;">Spotlight</a>
+            </div>
+            <div class="subdivision">
+                <h2>Anonymous</h2>
+                <a href="quality_circle_meeting.html" style="--i:5;">Quality Circle Meeting (QCM)</a>
+            </div>
+        </div>
+
+        <div class="division">
+            <h1>Unofficial</h1>
+            <div class="subdivision">
+                <a href="faculty_review.html" style="--i:6;">Faculty Review</a>
+                <a href="academics.html" style="--i:7;">Academics</a>
+                <a href="events_od_updates.html" style="--i:8;">Events and OD Updates</a>
+                <a href="thrift_store.html" style="--i:9;">Thrift Store</a>
+                <a href="placement_talk.html" style="--i:10;">Placement Talk</a>
+                <a href="ask_an_alumni.html" style="--i:11;">Ask an Alumni</a>
+                <a href="hostel.html" style="--i:12;">Hostel</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
