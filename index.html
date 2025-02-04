@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Portal</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, hsl(216, 63%, 62%), #c53cb3);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .login-form, .signup-form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 300px; /* Smaller width for better alignment */
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .login-form input,
+        .login-form select,
+        .signup-form input {
+            width: 90%;
+            padding: 10px; /* Smaller padding for better alignment */
+            margin: 10px 0; /* Smaller margin for better alignment */
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 14px; /* Smaller font size for better alignment */
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .login-form input::placeholder,
+        .signup-form input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .login-form select {
+            color: #000; /* White text for dropdown */
+            background-color: rgba(100, 100, 100, 0.8); /* Gray background for dropdown */
+        }
+
+        .login-form input:focus,
+        .login-form select:focus,
+        .signup-form input:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
+            outline: none;
+        }
+
+        .login-form button,
+        .signup-form button {
+            width: 100%;
+            padding: 10px; /* Smaller padding for better alignment */
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 14px; /* Smaller font size for better alignment */
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .login-form button:hover,
+        .signup-form button:hover {
+            background: linear-gradient(135deg, #2980b9, #3498db);
+            transform: translateY(-2px);
+        }
+
+        .login-form button:active,
+        .signup-form button:active {
+            transform: translateY(0);
+        }
+
+        /* Password Visibility Toggle */
+        .password-container {
+            position: relative;
+        }
+
+        .password-container input {
+            padding-right: 10px; /* Space for the eye icon */
+        }
+
+        .password-container .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 18px;
+            color: #fff;
+        }
+
+        /* Dropdown Styling */
+        .login-form select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>")
+                no-repeat right 10px center;
+            background-size: 12px;
+        }
+
+        /* Sign Up Link */
+        .signup-link {
+            margin-top: 15px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .signup-link:hover {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Form -->
+    <div class="login-form" id="login-form">
+        <h1>Login</h1>
+        <input type="text" id="username" placeholder="Username">
+        <div class="password-container">
+            <input type="password" id="password" placeholder="Password">
+            <span class="toggle-password" onclick="togglePasswordVisibility()"></span>
+        </div>
+        <select id="role">
+            <option value="student">Student</option>
+            <option value="faculty">Faculty</option>
+            <option value="alumni">Alumni</option>
+        </select>
+        <button onclick="login()">Login</button>
+        <div class="signup-link" onclick="showSignupForm()">Don't have an account? Sign Up</div>
+    </div>
+
+    <!-- Sign Up Form -->
+    <div class="signup-form" id="signup-form" style="display: none;">
+        <h1>Sign Up</h1>
+        <input type="text" id="name" placeholder="Full Name">
+        <input type="email" id="email" placeholder="Email">
+        <input type="text" id="new-username" placeholder="Username">
+        <div class="password-container">
+            <input type="password" id="new-password" placeholder="Password">
+            <span class="toggle-password" onclick="togglePasswordVisibility('new-password')"></span>
+        </div>
+        <button onclick="signup()">Sign Up</button>
+        <div class="signup-link" onclick="showLoginForm()">Already have an account? Login</div>
+    </div>
+
+    <script>
+        // Function to handle login
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const role = document.getElementById('role').value;
+
+            // Simulate login validation
+            if (username && password) {
+                // Redirect based on role
+                if (role === 'student') {
+                    window.location.href = 'student_index.html';
+                } else if (role === 'faculty') {
+                    window.location.href = 'faculty_index.html';
+                } else if (role === 'alumni') {
+                    window.location.href = 'alumni_index.html';
+                }
+            } else {
+                alert('Please enter a valid username and password.');
+            }
+        }
+
+        // Function to toggle password visibility
+        function togglePasswordVisibility(inputId = 'password') {
+            const passwordInput = document.getElementById(inputId);
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+            } else {
+                passwordInput.type = 'password';
+            }
+        }
+
+        // Function to show signup form
+        function showSignupForm() {
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('signup-form').style.display = 'block';
+        }
+
+        // Function to show login form
+        function showLoginForm() {
+            document.getElementById('signup-form').style.display = 'none';
+            document.getElementById('login-form').style.display = 'block';
+        }
+
+        // Function to handle signup
+        function signup() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const username = document.getElementById('new-username').value;
+            const password = document.getElementById('new-password').value;
+
+            if (name && email && username && password) {
+                // Simulate saving data to the backend (using localStorage for demonstration)
+                const userData = {
+                    name: name,
+                    email: email,
+                    username: username,
+                    password: password
+                };
+                localStorage.setItem('userData', JSON.stringify(userData));
+                alert('Signup successful!');
+                showLoginForm(); // Redirect to login form after signup
+            } else {
+                alert('Please fill in all fields.');
+            }
+        }
+    </script>
+</body>
+</html>
