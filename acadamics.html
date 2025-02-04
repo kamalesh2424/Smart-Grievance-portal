@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academics</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, hsl(216, 63%, 62%), #c53cb3);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 2.2em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .search-bar {
+            margin-bottom: 20px;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .search-bar input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .post-section {
+            margin-bottom: 30px;
+        }
+
+        .post-section textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 14px;
+            resize: vertical;
+        }
+
+        .post-section button {
+            margin-top: 10px;
+            padding: 8px 16px;
+            background: #3498db;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .post-section button:hover {
+            background: #2980b9;
+        }
+
+        .messages {
+            max-height: 400px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .message {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+        }
+
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .message-header h3 {
+            margin: 0;
+            font-size: 1.1em;
+        }
+
+        .message-header span {
+            font-size: 0.9em;
+            color: #ccc;
+        }
+
+        .message-body {
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .message-tag {
+            font-size: 0.8em;
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+
+        .tagged-user {
+            color: #ffcc00;
+            font-weight: bold;
+        }
+
+        .reply-section {
+            margin-top: 10px;
+        }
+
+        .reply-section textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 12px;
+            resize: vertical;
+        }
+
+        .reply-section button {
+            margin-top: 5px;
+            padding: 5px 10px;
+            background: #3498db;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .reply-section button:hover {
+            background: #2980b9;
+        }
+
+        .replies {
+            margin-top: 10px;
+            padding-left: 20px;
+            border-left: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .reply {
+            margin-bottom: 10px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 5px;
+        }
+
+        .reply-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .reply-header h4 {
+            margin: 0;
+            font-size: 0.9em;
+        }
+
+        .reply-header span {
+            font-size: 0.8em;
+            color: #ccc;
+        }
+
+        .reply-body {
+            font-size: 0.8em;
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background: #2ecc71;
+            color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            animation: slideIn 0.5s ease-in-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Academics</h1>
+
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Search for messages...">
+        </div>
+
+        <!-- Post Section -->
+        <div class="post-section">
+            <textarea id="post-input" placeholder="Share your thoughts on academics..."></textarea>
+            <button onclick="postMessage()">Post</button>
+        </div>
+
+        <!-- Messages Section -->
+        <div class="messages" id="messages">
+            <!-- Sample Message 1 -->
+            <div class="message">
+                <div class="message-header">
+                    <h3>John Doe</h3>
+                    <span>2 hours ago</span>
+                </div>
+                <div class="message-body">
+                    Does anyone have tips for preparing for the final exams? <span class="tagged-user">@JaneSmith</span>
+                </div>
+                <!-- Tag Section -->
+                <div class="message-tag">
+                    Tag: #Exams
+                </div>
+                <!-- Reply Section -->
+                <div class="reply-section">
+                    <textarea class="reply-input" placeholder="Reply to this message..."></textarea>
+                    <button onclick="replyToMessage(this)">Reply</button>
+                </div>
+                <!-- Replies -->
+                <div class="replies">
+                    <div class="reply">
+                        <div class="reply-header">
+                            <h4>Jane Smith</h4>
+                            <span>1 hour ago</span>
+                        </div>
+                        <div class="reply-body">
+                            Make sure to review past papers and focus on key topics.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sample Message 2 -->
+            <div class="message">
+                <div class="message-header">
+                    <h3>Jane Smith</h3>
+                    <span>5 hours ago</span>
+                </div>
+                <div class="message-body">
+                    I found this great resource for understanding calculus: [link]
+                </div>
+                <!-- Tag Section -->
+                <div class="message-tag">
+                    Tag: #Calculus
+                </div>
+                <!-- Reply Section -->
+                <div class="reply-section">
+                    <textarea class="reply-input" placeholder="Reply to this message..."></textarea>
+                    <button onclick="replyToMessage(this)">Reply</button>
+                </div>
+                <!-- Replies -->
+                <div class="replies">
+                    <div class="reply">
+                        <div class="reply-header">
+                            <h4>John Doe</h4>
+                            <span>4 hours ago</span>
+                        </div>
+                        <div class="reply-body">
+                            Thanks for sharing! This is really helpful.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- More messages will be dynamically added here -->
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="notification" style="display: none;">You've been tagged!</div>
+
+    <script>
+        // Function to post a new message
+        function postMessage() {
+            const postInput = document.getElementById('post-input');
+            const message = postInput.value.trim();
+            if (message) {
+                const messagesDiv = document.getElementById('messages');
+
+                // Create new message element
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add('message');
+
+                // Add message header
+                const headerDiv = document.createElement('div');
+                headerDiv.classList.add('message-header');
+                headerDiv.innerHTML = `
+                    <h3>Anonymous</h3>
+                    <span>Just now</span>
+                `;
+
+                // Add message body with tagged users highlighted
+                const bodyDiv = document.createElement('div');
+                bodyDiv.classList.add('message-body');
+                bodyDiv.innerHTML = highlightTags(message);
+
+                // Add tag section
+                const tagDiv = document.createElement('div');
+                tagDiv.classList.add('message-tag');
+                tagDiv.textContent = 'Tag: #General';
+
+                // Add reply section
+                const replySectionDiv = document.createElement('div');
+                replySectionDiv.classList.add('reply-section');
+                replySectionDiv.innerHTML = `
+                    <textarea class="reply-input" placeholder="Reply to this message..."></textarea>
+                    <button onclick="replyToMessage(this)">Reply</button>
+                `;
+
+                // Add replies container
+                const repliesDiv = document.createElement('div');
+                repliesDiv.classList.add('replies');
+
+                // Append all sections to message
+                messageDiv.appendChild(headerDiv);
+                messageDiv.appendChild(bodyDiv);
+                messageDiv.appendChild(tagDiv);
+                messageDiv.appendChild(replySectionDiv);
+                messageDiv.appendChild(repliesDiv);
+
+                // Append message to messages section
+                messagesDiv.prepend(messageDiv);
+
+                // Check for tags and show notification
+                checkForTags(message);
+
+                // Clear input
+                postInput.value = '';
+            }
+        }
+
+        // Function to reply to a message
+        function replyToMessage(button) {
+            const replyInput = button.previousElementSibling;
+            const replyText = replyInput.value.trim();
+            if (replyText) {
+                const repliesDiv = button.parentElement.nextElementSibling;
+
+                // Create new reply element
+                const replyDiv = document.createElement('div');
+                replyDiv.classList.add('reply');
+
+                // Add reply header
+                const headerDiv = document.createElement('div');
+                headerDiv.classList.add('reply-header');
+                headerDiv.innerHTML = `
+                    <h4>Anonymous</h4>
+                    <span>Just now</span>
+                `;
+
+                // Add reply body with tagged users highlighted
+                const bodyDiv = document.createElement('div');
+                bodyDiv.classList.add('reply-body');
+                bodyDiv.innerHTML = highlightTags(replyText);
+
+                // Append header and body to reply
+                replyDiv.appendChild(headerDiv);
+                replyDiv.appendChild(bodyDiv);
+
+                // Append reply to replies container
+                repliesDiv.appendChild(replyDiv);
+
+                // Check for tags and show notification
+                checkForTags(replyText);
+
+                // Clear input
+                replyInput.value = '';
+            }
+        }
+
+        // Function to highlight tags in the message
+        function highlightTags(text) {
+            return text.replace(/@(\w+)/g, '<span class="tagged-user">@$1</span>');
+        }
+
+        // Function to check for tags and show notification
+        function checkForTags(text) {
+            const tags = text.match(/@(\w+)/g);
+            if (tags) {
+                const notification = document.getElementById('notification');
+                notification.style.display = 'block';
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                }, 3000);
+            }
+        }
+
+        // Function to search messages
+        const searchInput = document.getElementById('search-input');
+        searchInput.addEventListener('input', function () {
+            const query = this.value.toLowerCase();
+            const messages = document.querySelectorAll('.message');
+
+            messages.forEach((message) => {
+                const body = message.querySelector('.message-body').textContent.toLowerCase();
+                if (body.includes(query)) {
+                    message.style.display = 'block';
+                } else {
+                    message.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
